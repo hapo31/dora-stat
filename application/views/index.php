@@ -10,30 +10,39 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script>
-            $(function(){ 
-                //「月別データ」
-                var data = [
-                { label: "１月", y: 65 },
-                { label: "２月", y: 59 },
-                { label: "３月", y: 80 },
-                { label: "４月", y: 81 },
-                { label: "５月", y: 56 },
-                { label: "６月", y: 55 },
-                { label: "７月", y: 48 }
-                ];
-
-                var stage = document.getElementById('stage');
-                var chart = new CanvasJS.Chart(stage, {
-                title: {
-                    text: "今月の露出数"  //グラフタイトル
-                },
-                theme: "theme4",  //テーマ設定
-                data: [{
-                    type: 'column',  //グラフの種類
-                    dataPoints: data  //表示するデータ
-                }]
-                });
-                chart.render();
+            $(function(){
+                $.ajax('api/weekly', {
+                    type: 'get',
+                    data: {
+                        timestamp: Date.now() - 604800
+                    }
+                }).then(
+                    function(jsonData) {
+                        var data = [];
+                        for(var i = 0; i < jsonData.length; ++i) {
+                            data.push({
+                                label: i + "id",
+                                y: jsonData[i].id - 0
+                            });
+                        }
+                        console.log(data);
+                        var stage = document.getElementById('stage');
+                        var chart = new CanvasJS.Chart(stage, {
+                            title: {
+                                text: "今月の露出数"  //グラフタイトル
+                            },
+                            axisY: {
+                                maximum: 10
+                            },
+                            theme: "theme4",  //テーマ設定
+                            data: [{
+                                type: 'column',  //グラフの種類
+                                dataPoints: data  //表示するデータ
+                            }]
+                        });
+                        chart.render();
+                    }
+                );
             });
         </script>
     </head>

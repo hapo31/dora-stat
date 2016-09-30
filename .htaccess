@@ -1,0 +1,5 @@
+Options FollowSymLinks Includes
+RewriteEngine on
+#RewriteEngine off
+RewriteCond $1 !^(index\.php|resource|robots\.txt|favicon\.ico)
+RewriteRule ^(.*)$ /dora_stat/index.php/$1 [L]
