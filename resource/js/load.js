@@ -2,8 +2,8 @@ $(function(){
     $.ajax('api/stat', {
         type: 'get',
         data: {
-            from: '2015-11',
-            to:  '2016-09'
+            from: '2015-10',
+            to:  '2016-10'
         }
     }).then(
         function(jsonData) {
@@ -19,11 +19,16 @@ $(function(){
             var stage = document.getElementById('stage');
             var chart = new CanvasJS.Chart(stage, {
                 title: {
-                    text: "2015-05 ~ 2016-09の期間中でドラえもんが性器を露出した回数"  //グラフタイトル
+                    text: "各月でドラえもんが性器を露出した回数"  //グラフタイトル
                 },
                 axisY: {
+                    suffix: "回",
                     maximum: 30
                 },
+                axisX: {
+                    lineThickness: 3,
+                },
+                animationEnabled: true,
                 theme: "theme4",  //テーマ設定
                 data: [{
                     type: 'column',  //グラフの種類

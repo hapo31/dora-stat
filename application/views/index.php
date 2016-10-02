@@ -25,9 +25,9 @@
 
                 <div id="patern02" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right active">
-                    <li class="active"><a href="">今週</a></li>
+                    <li class=""><a href="">今週</a></li>
                     <li class=""><a href="">今月</a></li>
-                    <li class=""><a href="">合計</a></li>
+                    <li class="active"><a href="">合計</a></li>
                     </ul>
                 </div>
             </nav>
