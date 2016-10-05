@@ -36,12 +36,14 @@ if __name__ == '__main__':
             rest_count -= get_count
             if mode_update or (not mode_update and not mode_old):
                 since_id = dao.get_last_tweetid()
-                opt_arg = {"since_id": since_id}
-                print( "last get tweet id:%d" % since_id)
+                if since_id != None:
+                    opt_arg = {"since_id": since_id}
+                    print( "last get tweet id:%d" % since_id)
             else:
                 max_id = dao.get_oldest_tweetid()
-                opt_arg = {"max_id": max_id}
-                print( "got oldest tweet id:%d" % max_id)
+                if max_id != None:
+                    opt_arg = {"max_id": max_id}
+                    print( "got oldest tweet id:%d" % max_id)
             # application only authontication
             auth = tweepy.auth.AppAuthHandler(twitter_setting.consumer_key, twitter_setting.consumer_secret)
             api = tweepy.API(auth)

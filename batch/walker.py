@@ -33,12 +33,18 @@ class Dao:
         from_date = datetime.datetime.strptime("%s-%s-%s 00:00:00 +0900" % vars, format ).astimezone(timezone('UTC'))
         to_date = datetime.datetime.strptime("%s-%s-%s 23:59:59 +0900" % vars, format ).astimezone(timezone('UTC'))
         result = self.select("select tweet_id, tweet from daily where date >= %s and date <= %s order by date limit 1", (from_date, to_date))
-        print(result)
+        if(len(result) == 0):
+            return None
         return int(result[0][0])
 
     def get_last_tweetid(self):
         result = self.select("select tweet_id from daily order by date desc limit 1")
+        if(len(result) == 0):
+            return None
         return int(result[0][0])
 
     def get_oldest_tweetid(self):
-        return int(self.select("select tweet_id from daily order by date limit 1")[0][0])
+        result = self.select("select tweet_id from daily order by date limit 1")
+        if len(result) == 0:
+            return None
+        return int(result[0][0])
