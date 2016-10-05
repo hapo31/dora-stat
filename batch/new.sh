@@ -1,0 +1,1 @@
+python3 tweet_collect.py -n 12
