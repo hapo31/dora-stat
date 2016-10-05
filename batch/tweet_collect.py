@@ -35,8 +35,7 @@ if __name__ == '__main__':
             get_count = 200 if rest_count > 200 else rest_count
             rest_count -= get_count
             if mode_update or (not mode_update and not mode_old):
-                yesterday = datetime.datetime.now() - datetime.timedelta(days = 1)
-                since_id = dao.get_first_tweetid_in_day(yesterday)
+                since_id = dao.get_last_tweetid()
                 opt_arg = {"since_id": since_id}
                 print( "last get tweet id:%d" % since_id)
             else:
@@ -65,13 +64,10 @@ if __name__ == '__main__':
             tweet_id = tweet.id_str
             created_at = tweet.created_at
             try:
-                dao.insert(
-        """
-        insert into daily (is_boron, tweet, tweet_id, date)
-        values (%s, %s, %s, %s)
-        """,
-                    (is_boron, text, tweet_id, created_at)
-                )
+                dao.insert("""
+                    insert into daily (is_boron, tweet, tweet_id, date)
+                    values (%s, %s, %s, %s)""",
+                    (is_boron, text, tweet_id, created_at))
             except mysql.connector.Error as e:
                 print(e)
         
