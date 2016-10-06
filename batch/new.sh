@@ -1,1 +1,1 @@
-python3 tweet_collect.py -n 12
+python3 /var/www/html/dora_stat/batch/tweet_collect.py -n 12
