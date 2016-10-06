@@ -55,9 +55,6 @@ if __name__ == '__main__':
             print("tweepy error:%s" % e.reason)
             exit()
         print("get tweet %d count" % len(tweets))
-        
-        if(len(tweets) == 0):
-            break
 
         for tweet in tweets:
             is_boron = 1 if tweet.text == "チンポ（ﾎﾞﾛﾝ" else 0
@@ -72,5 +69,8 @@ if __name__ == '__main__':
                     (is_boron, text, tweet_id, created_at))
             except mysql.connector.Error as e:
                 print(e)
+                        
+        if(len(tweets) == 1):
+            break
         
     print("-- done! --")
