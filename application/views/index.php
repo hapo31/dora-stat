@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="resource/css/default.css">
         <script src="resource/js/load.js"></script>
     </head>
     <body>
@@ -37,5 +38,10 @@
 
             </div>
         </div>
+        <footer class="footer">
+        <div class="container">
+            <p class="text-muted">via <a target=”_blank” href="https://twitter.com/5percent_dora">@5percent_dora</a></p>
+        </div>
+        </footer>
     </body>
 </html>
