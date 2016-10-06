@@ -1,6 +1,6 @@
 <?php 
 
-class api extends CI_Controller {
+class Api extends CI_Controller {
 
     public function index(){
         $this->output
